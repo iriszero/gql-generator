@@ -1,0 +1,2 @@
+graphene>=2.0
+py-gql>=0.6.1
