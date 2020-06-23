@@ -3,6 +3,31 @@ type Query {
     members: [Member!] @deprecated(reason: "Test a deprecated query")
 }
 
+type Mutation {
+    signup(
+        email: String!
+        username: String!
+        password: String!
+    ): UserToken!
+
+    signin(
+        email: String!
+        password: String!
+    ): String!
+
+    setConfig(
+        prefs: PrefsInput
+    ): Config!
+
+    sendMessage(
+        message: String!
+    ): String! @deprecated(reason: "Test a deprecated mutation")
+}
+
+input PrefsInput {
+    language: String!
+}
+
 type Config {
     language: String!
     level(domain: String!): Int!
