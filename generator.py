@@ -29,6 +29,17 @@ def generate_query(cur_name,
                    duplicate_args_counts=None,
                    cross_reference_key_list=None,
                    cur_depth=1):
+    """
+    Generate the query for the specified field
+    :param cur_name: the name of the current field
+    :param cur_parent_type: the parent type of the current field
+    :param cur_parent_name: the parent name of the current field
+    :param arguments_dict: a dictionary of arguments from all fields
+    :param duplicate_args_counts: a map for deduping argument name collisions
+    :param cross_reference_key_list: a list of the cross reference
+    :param cur_depth: current depth of field
+    :return: { "query_str" : subquery string, "arguments_dict" : the dictionary of the arguments from the current fields
+    """
     if arguments_dict is None:
         arguments_dict = {}
     if duplicate_args_counts is None:
@@ -116,6 +127,12 @@ def generate_query(cur_name,
 
 
 def generate_file(obj, description):
+    """
+    Generate the query for the specified field
+    :param obj: one of the root objects(Query, Mutation, Subscription)
+    :param description: description of the current object
+    :return: -
+    """
     if description == 'Mutation':
         output_folder_name = "mutations"
     elif description == "Query":
