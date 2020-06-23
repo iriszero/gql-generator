@@ -3,7 +3,7 @@ import logging
 from py_gql import build_schema
 from py_gql.lang.ast import UnionTypeDefinition
 from copy import deepcopy
-from util import *
+from utils import *
 
 TAP_STRING = '    '
 
