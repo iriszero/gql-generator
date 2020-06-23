@@ -91,7 +91,7 @@ def generate_query(cur_name,
         cross_reference_key_list = []
 
     field = gql_schema.get_type(cur_parent_type).field_map.get(cur_name)
-    cur_type_name = field.type.type.name
+    cur_type_name = field.type.type.name if hasattr(field.type, "type") else field.type.name
     cur_type = gql_schema.get_type(cur_type_name)
 
     query_str = ""
@@ -212,7 +212,7 @@ else:
     logging.warning('No query type found in your schema')
 
 if gql_schema.subscription_type:
-    # generate_file(gql_schema.subscription_type.fields, 'Subscription')
+    generate_file(gql_schema.subscription_type.fields, 'Subscription')
     pass
 else:
     logging.warning('No subscription type found in your schema')
